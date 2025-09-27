@@ -49,7 +49,7 @@ class ConversationEngine:
         try:
             print(f"lpppppppp: {self.messages}")
             # 调用 DeepSeek Chat API
-            response = client.chat.completions.create(
+            response = client.chat.completions.csreate(
                 model="deepseek-chat",  # 或 DeepSeek 提供的其他模型名称
                 messages=self.messages,
                 temperature=0.7,
@@ -62,8 +62,8 @@ class ConversationEngine:
                 self.messages.append(response.choices[0].message)
                 print(f"问题：{prompt}，响应: {html_content}")
                 with open(self.log_file, "w", encoding="utf-8") as f:
-                    f.write(f"Question: {prompt}")
-                    f.write(f"Answer: {html_content}")
+                    f.write(f"Question: {prompt}\n")
+                    f.write(f"Answer: {html_content}\n")
                 return html_content
                 # 保存到文件
                 
