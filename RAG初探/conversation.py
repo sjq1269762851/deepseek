@@ -3,6 +3,8 @@ from datetime import datetime
 import os
 import random
 from openai import OpenAI
+from utils import embedding_model
+from vector_db import db
 
 # 从环境变量获取 DeepSeek API Key
 api_key = os.getenv("DEEPSEEK_API_KEY")
@@ -15,8 +17,12 @@ client = OpenAI(
     base_url="https://api.deepseek.com/v1",  # DeepSeek API 的基地址
 )
 
+SYSTEM_PROMPT = """
+Human: 你是一个 AI 助手。你能够从提供的上下文段落片段中找到问题的答案。
+"""
+
 class ConversationEngine:
-    messages : list = [{"role": "system", "content": "你是一个专业的 Web 开发助手，擅长用 HTML/CSS/JavaScript 编写游戏。"}]
+    messages : list = [{"role": "system", "content": SYSTEM_PROMPT}]
     """
     多轮对话引擎类
     
@@ -44,10 +50,26 @@ class ConversationEngine:
         self.conversation_history = []
 
     
-    def chat_with_deepseek(self, prompt) -> str:
-        self.messages.append({"role": "user", "content": prompt})
+    def chat_with_deepseek(self, question) -> str:
+        dic = db.search("my_mfd_collection", question)
+        context = "\n".join(
+                                [line_with_distance[0] for line_with_distance in dic]
+                            )
+        USER_PROMPT = f"""
+                        请使用以下用 <context> 标签括起来的信息片段来回答用 <question> 标签括起来的问题。最后追加原始回答的中文翻译，并用 <translated>和</translated> 标签标注。
+                                    <context>
+                                    {context}
+                                    </context>
+                                    <question>
+                                    {question}
+                                    </question>
+                                    <translated>
+                                    </translated>
+                                    """
+        print(USER_PROMPT)
+        self.messages.append({"role": "user", "content": USER_PROMPT})
         try:
-            print(f"lpppppppp: {self.messages}")
+            #print(f"lpppppppp: {self.messages}")
             # 调用 DeepSeek Chat API
             response = client.chat.completions.create(
                 model="deepseek-chat",  # 或 DeepSeek 提供的其他模型名称
@@ -60,9 +82,9 @@ class ConversationEngine:
             if response.choices and len(response.choices) > 0:
                 html_content = response.choices[0].message.content
                 self.messages.append(response.choices[0].message)
-                print(f"问题：{prompt}，响应: {html_content}")
+                print(f"问题：{question}，响应: {html_content}")
                 with open(self.log_file, "w", encoding="utf-8") as f:
-                    f.write(f"Question: {prompt}\n")
+                    f.write(f"Question: {question}\n")
                     f.write(f"Answer: {html_content}\n")
                 return html_content
                 # 保存到文件
