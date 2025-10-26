@@ -1,0 +1,112 @@
+{
+  "metadata": {
+    "source_file": "./doc/product_information.json",
+    "generated_at": "2025-10-26T18:33:37.281824",
+    "total_chunks": 5,
+    "chunking_strategy": "by_product"
+  },
+  "chunks": [
+    {
+      "chunk_id": "product_0",
+      "product_name": "深海修护精华液",
+      "content": "产品名称：深海修护精华液\n\n                网络评价与热门话题：\n                #熬夜党救星 很多用户反馈用后皮肤真的透亮了很多，特别是熬夜后第二天脸色不会暗沉｜保湿效果很好，干皮亲妈｜敏感肌用了不过敏，温和不刺激｜就是价格小贵，但效果对得起价格\n\n                产品详细信息：\n                主要成分：深海藻提取物、维生素B5、透明质酸；适用人群：所有肤质，特别适合干燥、暗沉肌肤；功效：深层修护、强效保湿、提亮肤色；规格：30ml；使用方法：早晚洁面后取2-3滴均匀涂抹于面部",
+      "metadata": {
+        "source": "product_database",
+        "chunk_type": "full_product",
+        "product_name": "深海修护精华液",
+        "web_query_topics": [
+          "#熬夜党救星"
+        ],
+        "product_categories": [
+          "beauty_skincare"
+        ],
+        "content_length": 275,
+        "chunk_index": 0
+      },
+      "embedding_ready": true,
+      "timestamp": "2025-10-26T18:33:37.281625"
+    },
+    {
+      "chunk_id": "product_1",
+      "product_name": "智能健身手环8",
+      "content": "产品名称：智能健身手环8\n\n                网络评价与热门话题：\n                #运动达人必备 续航真的很给力，一周一充没问题｜心率监测比较准确，运动时数据实时更新｜睡眠监测功能很实用，能看出深睡浅睡时间｜性价比高，比同类产品便宜不少\n\n                产品详细信息：\n                功能：心率监测、血氧检测、睡眠监测、运动模式识别；规格：1.47英寸显示屏，180mAh电池；适用人群：运动爱好者、健康监测需求者；防水等级：50米防水；连接方式：蓝牙5.0",
+      "metadata": {
+        "source": "product_database",
+        "chunk_type": "full_product",
+        "product_name": "智能健身手环8",
+        "web_query_topics": [
+          "#运动达人必备"
+        ],
+        "product_categories": [
+          "electronics",
+          "sports_fitness"
+        ],
+        "content_length": 263,
+        "chunk_index": 1
+      },
+      "embedding_ready": true,
+      "timestamp": "2025-10-26T18:33:37.281649"
+    },
+    {
+      "chunk_id": "product_2",
+      "product_name": "冷萃咖啡液（榛果风味）",
+      "content": "产品名称：冷萃咖啡液（榛果风味）\n\n                网络评价与热门话题：\n                #打工人的续命水 榛果味很浓郁，直接加水就是一杯好咖啡｜无糖零添加，健康选择｜溶解很快，冷热水都可以冲｜携带方便，办公室必备\n\n                产品详细信息：\n                成分：100%阿拉比卡咖啡豆、水；口味：榛果风味；规格：33ml*12包/盒；适用人群：咖啡爱好者、上班族；储存方法：阴凉干燥处，开封后需冷藏；饮用方法：取一包加入150-200ml水或牛奶",
+      "metadata": {
+        "source": "product_database",
+        "chunk_type": "full_product",
+        "product_name": "冷萃咖啡液（榛果风味）",
+        "web_query_topics": [
+          "#打工人的续命水"
+        ],
+        "product_categories": [
+          "food_beverage"
+        ],
+        "content_length": 260,
+        "chunk_index": 2
+      },
+      "embedding_ready": true,
+      "timestamp": "2025-10-26T18:33:37.281656"
+    },
+    {
+      "chunk_id": "product_3",
+      "product_name": "全棉抗菌毛巾",
+      "content": "产品名称：全棉抗菌毛巾\n\n                网络评价与热门话题：\n                #宝宝用了不起痘 材质真的很柔软，吸水性强｜用了三个月都不掉毛｜抗菌效果明显，南方潮湿天气也不发霉｜久洗不变硬，比普通毛巾耐用\n\n                产品详细信息：\n                材质：100%长绒棉；工艺：特殊抗菌处理；规格：70cm*140cm；适用场景：日常洗脸、浴室使用、运动擦汗；清洗建议：建议单独清洗，避免与衣物混洗",
+      "metadata": {
+        "source": "product_database",
+        "chunk_type": "full_product",
+        "product_name": "全棉抗菌毛巾",
+        "web_query_topics": [
+          "#宝宝用了不起痘"
+        ],
+        "product_categories": [
+          "home_textile",
+          "sports_fitness"
+        ],
+        "content_length": 235,
+        "chunk_index": 3
+      },
+      "embedding_ready": true,
+      "timestamp": "2025-10-26T18:33:37.281661"
+    },
+    {
+      "chunk_id": "product_4",
+      "product_name": "筋膜枪专业版",
+      "content": "产品名称：筋膜枪专业版\n\n                网络评价与热门话题：\n                #肌肉放松神器 健身完后用真的很舒服，肌肉酸痛缓解很多｜力度档位多，可以根据需要调节｜噪音小，不会打扰别人｜携带方便，配了专用收纳包\n\n                产品详细信息：\n                配置：4个专业按摩头（球形、扁平、圆柱、U型）；续航时间：10-20小时；力度档位：3档可调；规格：净重0.9kg；适用人群：健身爱好者、久坐办公族、运动员",
+      "metadata": {
+        "source": "product_database",
+        "chunk_type": "full_product",
+        "product_name": "筋膜枪专业版",
+        "web_query_topics": [
+          "#肌肉放松神器"
+        ],
+        "product_categories": [
+          "sports_fitness"
+        ],
+        "content_length": 242,
+        "chunk_index": 4
+      },
+      "embedding_ready": true,
+      "timestamp": "2025-10-26T18:33:37.281666"
+    }
+  ]
+}
