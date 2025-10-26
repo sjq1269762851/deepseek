@@ -242,7 +242,7 @@ class ConversationEngine:
                         try:
                             final_response = json.loads(extracted_json_content)
                             print("Agent: 任务完成，成功解析最终JSON文案。")
-                            return json.dumps(final_response, ensure_ascii=False, indent=2)
+                            return self.format_rednote_for_markdown(json.dumps(final_response, ensure_ascii=False, indent=2))
                         except json.JSONDecodeError as e:
                             print(f"Agent: 提取到JSON块但解析失败: {e}")
                             print(f"尝试解析的字符串:\n{extracted_json_content}")
@@ -252,7 +252,7 @@ class ConversationEngine:
                         try:
                             final_response = json.loads(response_message.content)
                             print("Agent: 任务完成，直接解析最终JSON文案。")
-                            return json.dumps(final_response, ensure_ascii=False, indent=2)
+                            return self.format_rednote_for_markdown(json.dumps(final_response, ensure_ascii=False, indent=2))
                         except json.JSONDecodeError:
                             print("Agent: 生成了非JSON格式内容或非Markdown JSON块，可能还在思考或出错。")
                             messages.append(response_message) # 非JSON格式，继续对话
@@ -267,3 +267,43 @@ class ConversationEngine:
         
         print("\n⚠️ Agent 达到最大迭代次数或未能生成最终文案。请检查Prompt或增加迭代次数。")
         return "未能成功生成文案。"
+    
+    def format_rednote_for_markdown(self, json_string: str) -> str:
+        """
+        将 JSON 格式的小红书文案转换为 Markdown 格式，以便于阅读和发布。
+
+        Args:
+            json_string (str): 包含小红书文案的 JSON 字符串。
+                            预计格式为 {"title": "...", "body": "...", "hashtags": [...], "emojis": [...]}
+
+        Returns:
+            str: 格式化后的 Markdown 文本。
+        """
+        try:
+            data = json.loads(json_string)
+        except json.JSONDecodeError as e:
+            return f"错误：无法解析 JSON 字符串 - {e}\n原始字符串：\n{json_string}"
+
+        title = data.get("title", "无标题")
+        body = data.get("body", "")
+        hashtags = data.get("hashtags", [])
+        # 表情符号通常已经融入标题和正文中，这里可以选择是否单独列出
+        emojis = data.get("emojis", []) 
+
+        # 构建 Markdown 文本
+        markdown_output = f"## {title}\n\n" # 标题使用二级标题
+        
+        # 正文，保留换行符
+        markdown_output += f"{body}\n\n"
+        
+        # Hashtags
+        if hashtags:
+            hashtag_string = " ".join(hashtags) # 小红书标签通常是空格分隔
+            markdown_output += f"{hashtag_string}\n"
+            
+        # 如果需要，可以单独列出表情符号，但通常它们已经包含在标题和正文中
+        if emojis:
+            emoji_string = " ".join(emojis)
+            markdown_output += f"\n使用的表情：{emoji_string}\n"
+            
+        return markdown_output.strip() # 去除末尾多余的空白

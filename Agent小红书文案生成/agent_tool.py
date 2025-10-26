@@ -41,7 +41,7 @@ TOOLS_DEFINITION = [
 def mock_query_product_database(product_name: str) -> str:
     """模拟查询产品数据库，返回预设的产品信息。"""
     print(f"[Tool Call] 模拟查询产品数据库：{product_name}")
-    dic = db.search("product_information", product_name, "IP", 1)
+    dic = db.search("product_information", product_name, "IP", 2)
 
     content = [line_with_distance[0] for line_with_distance in dic]
 
